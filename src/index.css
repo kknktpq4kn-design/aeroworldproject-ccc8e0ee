@@ -112,6 +112,14 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    background: var(--gradient-page);
+    @apply text-foreground min-h-screen;
+    font-family: 'Segoe UI', Tahoma, 'Helvetica Neue', Arial, sans-serif;
   }
+
+  a.aero-link {
+    color: hsl(var(--link));
+    text-decoration: none;
+  }
+  a.aero-link:hover { text-decoration: underline; }
 }
