@@ -1,5 +1,8 @@
 import heroImg from "@/assets/hero-aero.jpg";
-import logo from "@/assets/logo-win71.png";
+import logoWindows from "@/assets/logo-windows.png";
+import logoMicrosoft from "@/assets/logo-microsoft.png";
+import logoDiscord from "@/assets/logo-discord.jpg";
+import featThemes from "@/assets/feat-themes.jpg";
 import featGadgets from "@/assets/feat-gadgets.jpg";
 import featInstaller from "@/assets/feat-installer.jpg";
 import featUpdates from "@/assets/feat-updates.jpg";
@@ -9,9 +12,14 @@ import featSupport from "@/assets/feat-support.jpg";
 
 const features = [
   {
+    img: featThemes,
+    title: "Temi e wallpaper",
+    body: "Windows 7.1 include i temi Aero originali e i wallpaper iconici di Windows XP, Vista e 7.",
+  },
+  {
     img: featGadgets,
-    title: "Gadgets e temi",
-    body: "Windows 7.1 ripristina i gadget originali e i temi Aero, esattamente come li ricordi.",
+    title: "Gadgets desktop",
+    body: "I gadget originali del desktop tornano al loro posto, esattamente come li ricordi.",
   },
   {
     img: featInstaller,
@@ -46,20 +54,22 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       {/* Top utility bar */}
       <div className="bg-gradient-header text-primary-foreground/80 text-xs">
-        <div className="max-w-6xl mx-auto px-4 py-1.5 flex justify-end gap-2">
-          <span>Italia</span>
-          <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Cambia</a>
-          <span>|</span>
-          <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Altri progetti</a>
+        <div className="max-w-6xl mx-auto px-4 py-1.5 flex items-center justify-between gap-2">
+          <img src={logoMicrosoft} alt="Microsoft" className="h-3 w-auto opacity-90" />
+          <div className="flex items-center gap-2">
+            <span>Italia</span>
+            <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Cambia</a>
+            <span>|</span>
+            <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Altri progetti</a>
+          </div>
         </div>
       </div>
 
       {/* Header with logo */}
       <header className="bg-gradient-header">
         <div className="max-w-6xl mx-auto px-4 py-4">
-          <a href="/" className="inline-flex items-center gap-2">
-            <img src={logo} alt="Windows 7.1 logo" width={36} height={36} className="drop-shadow" />
-            <span className="text-primary-foreground text-2xl font-light tracking-tight">Windows</span>
+          <a href="/" className="inline-flex items-center">
+            <img src={logoWindows} alt="Windows 7.1" className="h-8 w-auto drop-shadow" />
           </a>
         </div>
       </header>
@@ -171,13 +181,15 @@ const Index = () => {
               </ul>
 
               <div className="mt-8 p-4 bg-gradient-card rounded-md shadow-aero ring-1 ring-[hsl(205_40%_82%)]">
-                <h3 className="text-sm font-semibold text-primary mb-2">Discord</h3>
+                <div className="bg-[hsl(235_86%_57%)] rounded p-3 mb-3 flex items-center justify-center">
+                  <img src={logoDiscord} alt="Discord" className="h-7 w-auto" />
+                </div>
                 <p className="text-xs text-foreground/75 mb-3">
                   Unisciti alla community per supporto, anteprime e novità.
                 </p>
                 <a
                   href="#"
-                  className="inline-block w-full text-center text-sm py-2 px-3 rounded bg-gradient-to-b from-[hsl(205_90%_55%)] to-[hsl(210_95%_42%)] text-white shadow-aero hover:from-[hsl(205_95%_60%)] hover:to-[hsl(210_100%_46%)] transition-colors"
+                  className="inline-block w-full text-center text-sm py-2 px-3 rounded bg-gradient-to-b from-[hsl(235_86%_62%)] to-[hsl(235_86%_50%)] text-white shadow-aero hover:from-[hsl(235_90%_66%)] hover:to-[hsl(235_90%_54%)] transition-colors"
                 >
                   Entra nel server
                 </a>
@@ -190,9 +202,8 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-gradient-header text-primary-foreground/80 mt-12">
         <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-          <a href="/" className="inline-flex items-center gap-2">
-            <img src={logo} alt="Windows 7.1" width={24} height={24} loading="lazy" />
-            <span className="text-primary-foreground text-base font-light">Windows</span>
+          <a href="/" className="inline-flex items-center">
+            <img src={logoWindows} alt="Windows 7.1" className="h-5 w-auto" loading="lazy" />
           </a>
           <p>
             ©2026 Windows 7.1 Project |{" "}
