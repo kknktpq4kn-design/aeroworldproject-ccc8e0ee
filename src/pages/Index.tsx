@@ -3,9 +3,9 @@ import heroImg from "@/assets/hero-aero.jpg";
 import featGadgets from "@/assets/feat-gadgets.jpg";
 import featInstaller from "@/assets/feat-installer.jpg";
 import featUpdates from "@/assets/feat-updates.jpg";
-import featMarketplace from "@/assets/feat-hardware.jpg";
-import featHardware from "@/assets/feat-support.jpg";
-import featSupport from "@/assets/feat-marketplace.jpg";
+import featMarketplace from "@/assets/feat-support.jpg";
+import featHardware from "@/assets/feat-marketplace.jpg";
+import featSupport from "@/assets/feat-hardware.jpg";
 
 const features = [
   {
