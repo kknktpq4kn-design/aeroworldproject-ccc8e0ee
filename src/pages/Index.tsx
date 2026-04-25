@@ -77,7 +77,7 @@ const Index = () => {
                       src={f.img}
                       alt={f.title}
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
                     />
                   </div>
                   <h3 className="text-[hsl(var(--link))] font-semibold text-base mt-3 mb-1">
