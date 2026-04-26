@@ -7,25 +7,34 @@ const Footer = () => {
       <img
         src={footerBanner}
         alt="©2026 AeroWorld — This project is not related with Microsoft."
-        className="w-full h-auto block"
+        className="w-full h-auto block select-none"
+        draggable={false}
       />
-      {/* Clickable overlays for logo, credits and microsoft link */}
+
+      {/* Windows logo */}
       <Link
         to="/"
         aria-label="Home"
-        className="absolute top-[18%] left-[12%] w-[14%] h-[40%]"
+        className="absolute"
+        style={{ left: "9.4%", top: "23%", width: "11.5%", height: "30%" }}
       />
+
+      {/* Credits */}
       <a
         href="#"
         aria-label="Credits"
-        className="absolute top-[28%] left-1/2 -translate-x-1/2 ml-[60px] w-[80px] h-[24px]"
+        className="absolute"
+        style={{ left: "57%", top: "28%", width: "7.2%", height: "16%" }}
       />
+
+      {/* Microsoft logo */}
       <a
         href="https://microsoft.com"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Microsoft"
-        className="absolute top-[24%] right-[8%] w-[10%] h-[28%]"
+        className="absolute"
+        style={{ left: "88.5%", top: "28%", width: "8%", height: "18%" }}
       />
     </div>
   );
