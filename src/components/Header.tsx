@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logoWindows from "@/assets/logo-windows.png";
+import headerBanner from "@/assets/header-banner.jpeg";
 
 type SubItem = { label: string; to: string };
 
@@ -38,8 +38,8 @@ function NavItem({ label, to, subItems, isActive }: NavItemProps) {
         to={to}
         className={`px-4 py-3 text-sm inline-block transition-colors ${
           isActive
-            ? "text-primary-foreground font-semibold bg-[hsl(212_55%_32%)]"
-            : "text-primary-foreground/85 hover:text-primary-foreground hover:bg-[hsl(212_55%_32%)]"
+            ? "text-primary-foreground font-semibold"
+            : "text-primary-foreground/85 hover:text-primary-foreground"
         }`}
       >
         {label}
@@ -68,26 +68,27 @@ function NavItem({ label, to, subItems, isActive }: NavItemProps) {
 const Header = () => {
   const location = useLocation();
   return (
-    <div className="w-full bg-gradient-header">
-      {/* Top utility bar */}
+    <div
+      className="w-full bg-no-repeat bg-top bg-cover"
+      style={{ backgroundImage: `url(${headerBanner})` }}
+    >
+      {/* Top utility bar — invisible overlay to keep links clickable */}
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-end items-center py-1.5 text-xs gap-2">
-          <span className="text-primary-foreground/80">United States</span>
-          <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Change</a>
-          <span className="text-primary-foreground/40">|</span>
-          <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Other projects</a>
+          <span className="opacity-0 select-none">United States</span>
+          <a href="#" className="opacity-0 hover:opacity-100 hover:underline text-[hsl(45_100%_70%)]">Change</a>
+          <span className="opacity-0">|</span>
+          <a href="#" className="opacity-0 hover:opacity-100 hover:underline text-[hsl(45_100%_70%)]">Other projects</a>
         </div>
       </div>
 
-      {/* Logo */}
+      {/* Logo area — clickable */}
       <div className="max-w-6xl mx-auto px-4 pb-1 pt-2">
-        <Link to="/" className="inline-flex items-center">
-          <img src={logoWindows} alt="Windows" className="h-9 w-auto drop-shadow" />
-        </Link>
+        <Link to="/" aria-label="Home" className="inline-block h-9 w-44" />
       </div>
 
       {/* Navigation */}
-      <div className="border-t border-[hsl(212_60%_10%)] bg-gradient-nav">
+      <div className="border-t border-[hsl(212_60%_10%)]/40">
         <div className="max-w-6xl mx-auto px-4">
           <nav className="flex items-center">
             <NavItem label="Home" to="/" isActive={location.pathname === "/"} />
