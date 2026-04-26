@@ -38,7 +38,7 @@ const features = [
     body: (
       <>
         Unlike the original Windows 7, Windows 7.1 supports even the latest hardware.{" "}
-        <a href="#" className="aero-link">See recommended specifications</a>
+        <a href="/specs" className="aero-link">See recommended specifications</a>
       </>
     ),
   },
