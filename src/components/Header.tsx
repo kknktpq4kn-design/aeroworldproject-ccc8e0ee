@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import headerBanner from "@/assets/header-banner.jpeg";
+import logoWindows from "@/assets/logo-windows.png";
 
 type SubItem = { label: string; to: string };
 
@@ -25,7 +27,7 @@ interface NavItemProps {
   isActive: boolean;
 }
 
-function NavItem({ to, label, subItems, isActive }: NavItemProps) {
+function DesktopNavItem({ to, label, subItems, isActive }: NavItemProps) {
   const [open, setOpen] = useState(false);
   const hasSubMenu = !!subItems && subItems.length > 0;
   return (
@@ -37,7 +39,7 @@ function NavItem({ to, label, subItems, isActive }: NavItemProps) {
       <Link
         to={to}
         aria-current={isActive ? "page" : undefined}
-        className={`px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm inline-block transition-colors ${
+        className={`px-4 py-3 text-sm inline-block transition-colors ${
           isActive
             ? "text-white font-bold"
             : "text-[hsl(205_60%_75%)] hover:text-white"
@@ -68,66 +70,106 @@ function NavItem({ to, label, subItems, isActive }: NavItemProps) {
 
 const Header = () => {
   const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navItems = [
+    { to: "/", label: "Home", isActive: location.pathname === "/" },
+    { to: "/download", label: "Download", subItems: downloadSubMenu, isActive: location.pathname.startsWith("/download") },
+    { to: "/discover", label: "Discover Windows", subItems: discoverSubMenu, isActive: location.pathname.startsWith("/discover") },
+  ];
+
   return (
-    <div className="w-full relative">
-      <img
-        src={headerBanner}
-        alt="Windows"
-        className="w-full h-auto block select-none"
-        draggable={false}
-      />
-
-      {/* Logo hotspot */}
-      <Link
-        to="/"
-        aria-label="Home"
-        className="absolute"
-        style={{ left: "9%", top: "31%", width: "12%", height: "27%" }}
-      />
-
-      {/* Top bar links */}
-      <a
-        href="#"
-        aria-label="Change region"
-        className="absolute"
-        style={{ left: "74.5%", top: "11%", width: "3.8%", height: "13%" }}
-      />
-      <a
-        href="#"
-        aria-label="Other projects"
-        className="absolute"
-        style={{ left: "79.3%", top: "11%", width: "8.9%", height: "13%" }}
-      />
-
-      {/* Cover the baked-in nav text from the image with a matching dark band,
-          then render real nav items on top so the active one can light up. */}
-      <div
-        className="absolute left-0 right-0 bg-[hsl(212_55%_14%)]"
-        style={{ top: "70%", height: "30%" }}
-      />
-      <div
-        className="absolute left-0 right-0 flex items-center"
-        style={{ top: "70%", height: "30%", paddingLeft: "7%" }}
-      >
-        <NavItem
-          to="/"
-          label="Home"
-          isActive={location.pathname === "/"}
-        />
-        <NavItem
-          to="/download"
-          label="Download"
-          subItems={downloadSubMenu}
-          isActive={location.pathname.startsWith("/download")}
-        />
-        <NavItem
-          to="/discover"
-          label="Discover Windows"
-          subItems={discoverSubMenu}
-          isActive={location.pathname.startsWith("/discover")}
-        />
+    <header className="w-full">
+      {/* MOBILE header — compact, native (no banner image) */}
+      <div className="md:hidden bg-gradient-header">
+        <div className="flex items-center justify-between px-3 py-2">
+          <Link to="/" aria-label="Home" className="inline-flex items-center">
+            <img src={logoWindows} alt="Windows" className="h-7 w-auto drop-shadow" />
+          </Link>
+          <button
+            type="button"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((v) => !v)}
+            className="p-2 text-primary-foreground rounded hover:bg-[hsl(212_55%_22%)]"
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+        {mobileOpen && (
+          <nav className="border-t border-[hsl(212_60%_10%)] bg-gradient-nav">
+            <ul className="flex flex-col">
+              {navItems.map((item) => (
+                <li key={item.to} className="border-b border-[hsl(212_60%_10%)]/40 last:border-b-0">
+                  <Link
+                    to={item.to}
+                    onClick={() => setMobileOpen(false)}
+                    className={`block px-4 py-3 text-sm transition-colors ${
+                      item.isActive
+                        ? "text-white font-bold bg-[hsl(212_55%_22%)]"
+                        : "text-[hsl(205_60%_80%)] hover:text-white hover:bg-[hsl(212_55%_22%)]"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li className="px-4 py-2 text-xs text-primary-foreground/70 flex gap-3">
+                <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Change region</a>
+                <span className="opacity-40">|</span>
+                <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Other projects</a>
+              </li>
+            </ul>
+          </nav>
+        )}
       </div>
-    </div>
+
+      {/* DESKTOP header — banner image with hotspots */}
+      <div className="hidden md:block w-full relative">
+        <img
+          src={headerBanner}
+          alt="Windows"
+          className="w-full h-auto block select-none"
+          draggable={false}
+        />
+
+        {/* Logo */}
+        <Link
+          to="/"
+          aria-label="Home"
+          className="absolute"
+          style={{ left: "9%", top: "31%", width: "12%", height: "27%" }}
+        />
+
+        {/* Top bar links */}
+        <a
+          href="#"
+          aria-label="Change region"
+          className="absolute"
+          style={{ left: "74.5%", top: "11%", width: "3.8%", height: "13%" }}
+        />
+        <a
+          href="#"
+          aria-label="Other projects"
+          className="absolute"
+          style={{ left: "79.3%", top: "11%", width: "8.9%", height: "13%" }}
+        />
+
+        {/* Cover baked-in nav text and render real items so active state lights up */}
+        <div
+          className="absolute left-0 right-0 bg-[hsl(212_55%_14%)]"
+          style={{ top: "70%", height: "30%" }}
+        />
+        <div
+          className="absolute left-0 right-0 flex items-center"
+          style={{ top: "70%", height: "30%", paddingLeft: "7%" }}
+        >
+          {navItems.map((item) => (
+            <DesktopNavItem key={item.to} {...item} />
+          ))}
+        </div>
+      </div>
+    </header>
   );
 };
 
