@@ -18,30 +18,33 @@ const discoverSubMenu: SubItem[] = [
   { label: "More articles", to: "/discover" },
 ];
 
-interface NavHotspotProps {
+interface NavItemProps {
   to: string;
   label: string;
-  style: React.CSSProperties;
   subItems?: SubItem[];
   isActive: boolean;
 }
 
-function NavHotspot({ to, label, style, subItems, isActive }: NavHotspotProps) {
+function NavItem({ to, label, subItems, isActive }: NavItemProps) {
   const [open, setOpen] = useState(false);
   const hasSubMenu = !!subItems && subItems.length > 0;
   return (
     <div
-      className="absolute"
-      style={style}
+      className="relative"
       onMouseEnter={() => hasSubMenu && setOpen(true)}
       onMouseLeave={() => hasSubMenu && setOpen(false)}
     >
       <Link
         to={to}
-        aria-label={label}
         aria-current={isActive ? "page" : undefined}
-        className="block w-full h-full"
-      />
+        className={`px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm inline-block transition-colors ${
+          isActive
+            ? "text-white font-bold"
+            : "text-[hsl(205_60%_75%)] hover:text-white"
+        }`}
+      >
+        {label}
+      </Link>
       {hasSubMenu && open && (
         <div className="absolute top-full left-0 z-50 bg-[hsl(212_60%_15%)] border border-[hsl(205_55%_30%)] shadow-aero min-w-[200px]">
           {subItems!.map((item, i) => (
@@ -69,12 +72,12 @@ const Header = () => {
     <div className="w-full relative">
       <img
         src={headerBanner}
-        alt="Windows — Home, Download, Discover Windows"
+        alt="Windows"
         className="w-full h-auto block select-none"
         draggable={false}
       />
 
-      {/* Logo */}
+      {/* Logo hotspot */}
       <Link
         to="/"
         aria-label="Home"
@@ -96,27 +99,34 @@ const Header = () => {
         style={{ left: "79.3%", top: "11%", width: "8.9%", height: "13%" }}
       />
 
-      {/* Nav items */}
-      <NavHotspot
-        to="/"
-        label="Home"
-        isActive={location.pathname === "/"}
-        style={{ left: "9%", top: "73%", width: "7.2%", height: "22%" }}
+      {/* Cover the baked-in nav text from the image with a matching dark band,
+          then render real nav items on top so the active one can light up. */}
+      <div
+        className="absolute left-0 right-0 bg-[hsl(212_55%_14%)]"
+        style={{ top: "70%", height: "30%" }}
       />
-      <NavHotspot
-        to="/download"
-        label="Download"
-        subItems={downloadSubMenu}
-        isActive={location.pathname.startsWith("/download")}
-        style={{ left: "16.6%", top: "73%", width: "8.2%", height: "22%" }}
-      />
-      <NavHotspot
-        to="/discover"
-        label="Discover Windows"
-        subItems={discoverSubMenu}
-        isActive={location.pathname.startsWith("/discover")}
-        style={{ left: "25%", top: "73%", width: "13.4%", height: "22%" }}
-      />
+      <div
+        className="absolute left-0 right-0 flex items-center"
+        style={{ top: "70%", height: "30%", paddingLeft: "7%" }}
+      >
+        <NavItem
+          to="/"
+          label="Home"
+          isActive={location.pathname === "/"}
+        />
+        <NavItem
+          to="/download"
+          label="Download"
+          subItems={downloadSubMenu}
+          isActive={location.pathname.startsWith("/download")}
+        />
+        <NavItem
+          to="/discover"
+          label="Discover Windows"
+          subItems={discoverSubMenu}
+          isActive={location.pathname.startsWith("/discover")}
+        />
+      </div>
     </div>
   );
 };
