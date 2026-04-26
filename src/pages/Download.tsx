@@ -5,15 +5,15 @@ import box from "@/assets/win7-box.jpg";
 const Download = () => {
   return (
     <Layout>
-      <div className="max-w-6xl mx-auto px-4 py-6">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
         {/* Banner */}
         <section className="rounded-sm overflow-hidden shadow-aero ring-1 ring-[hsl(205_60%_75%)]">
           <img src={banner} alt="Download Windows 7 — authentic Windows 7, secure and ready for 2026." className="w-full h-auto block" />
         </section>
 
-        <div className="h-px bg-gradient-to-r from-[hsl(205_70%_70%)] to-transparent mt-8 mb-6" />
+        <div className="h-px bg-gradient-to-r from-[hsl(205_70%_70%)] to-transparent mt-6 sm:mt-8 mb-5 sm:mb-6" />
 
-        <h2 className="text-xl font-semibold text-foreground mb-6">Windows 7.1 (latest)</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-6">Windows 7.1 (latest)</h2>
 
         <article className="max-w-md">
           <div className="w-40">
