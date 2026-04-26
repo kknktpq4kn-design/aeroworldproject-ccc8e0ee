@@ -52,7 +52,7 @@ const features = [
 const Index = () => {
   return (
     <Layout>
-      <div className="max-w-6xl mx-auto px-4 py-6">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
         {/* Hero */}
         <section className="rounded-sm overflow-hidden shadow-aero ring-1 ring-[hsl(205_60%_75%)]">
           <img
@@ -63,13 +63,13 @@ const Index = () => {
         </section>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10 mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-8 lg:gap-10 mt-6 sm:mt-8">
           {/* Features */}
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-1">What Windows 7.1 offers</h2>
-            <div className="h-px bg-gradient-to-r from-[hsl(205_70%_70%)] to-transparent mb-6" />
+            <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-1">What Windows 7.1 offers</h2>
+            <div className="h-px bg-gradient-to-r from-[hsl(205_70%_70%)] to-transparent mb-5 sm:mb-6" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 gap-y-6 sm:gap-y-8">
               {features.map((f) => (
                 <article key={f.title}>
                   <div className="aspect-[4/3] bg-white rounded-sm overflow-hidden shadow-aero ring-1 ring-[hsl(205_40%_82%)]">

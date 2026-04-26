@@ -36,11 +36,11 @@ const pcApps = [
 ];
 
 const AppGrid = ({ apps }: { apps: { img: string; label: string }[] }) => (
-  <div className="grid grid-cols-4 gap-x-4 gap-y-6 mt-6">
+  <div className="grid grid-cols-3 sm:grid-cols-4 gap-x-3 gap-y-5 mt-6">
     {apps.map((a) => (
       <a key={a.label} href="#" className="flex flex-col items-center text-center group">
         <img src={a.img} alt={a.label} className="h-12 w-12 object-contain" loading="lazy" />
-        <span className="mt-2 text-xs text-[hsl(var(--link))] group-hover:underline">{a.label}</span>
+        <span className="mt-2 text-xs text-[hsl(var(--link))] group-hover:underline break-words">{a.label}</span>
       </a>
     ))}
   </div>
@@ -49,8 +49,8 @@ const AppGrid = ({ apps }: { apps: { img: string; label: string }[] }) => (
 const Discover = () => {
   return (
     <Layout>
-      <div className="max-w-6xl mx-auto px-4 py-6">
-        <h1 className="text-3xl font-light text-foreground mb-4">Windows Live</h1>
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
+        <h1 className="text-2xl sm:text-3xl font-light text-foreground mb-4">Windows Live</h1>
 
         {/* Banner */}
         <section className="rounded-sm overflow-hidden shadow-aero ring-1 ring-[hsl(205_60%_75%)] relative">
