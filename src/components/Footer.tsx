@@ -1,66 +1,71 @@
-import { Link } from "react-router-dom";
-import footerBanner from "@/assets/footer-banner.jpeg";
-import logoWindows from "@/assets/logo-windows.png";
-import logoMicrosoft from "@/assets/logo-microsoft.png";
+import waveBg from "@/assets/r7-wave.png";
+import logoWindows from "@/assets/r7-logo-windows.jpg";
+import logoMicrosoft from "@/assets/r7-logo-microsoft.jpg";
 
 const Footer = () => {
   return (
-    <footer className="w-full mt-12">
-      {/* MOBILE footer — compact native version */}
-      <div className="md:hidden bg-gradient-header">
-        <div className="px-4 py-5 flex flex-col items-center gap-3 text-center">
-          <Link to="/" aria-label="Home">
-            <img src={logoWindows} alt="Windows" className="h-7 w-auto" loading="lazy" />
-          </Link>
-          <div className="flex items-center gap-3 text-xs">
-            <span className="text-primary-foreground/75">©2026 AeroWorld</span>
-            <span className="text-primary-foreground/40">|</span>
-            <a href="#" className="text-[hsl(45_100%_70%)] hover:underline">Credits</a>
+    <footer className="w-full mt-12 bg-white">
+      {/* Wave background top section */}
+      <div
+        className="w-full"
+        style={{
+          backgroundImage: `url(${waveBg})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "left bottom",
+          backgroundSize: "auto 100%",
+        }}
+      >
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-5">
+          {/* Desktop layout */}
+          <div className="hidden md:grid grid-cols-3 items-center gap-4">
+            <div className="flex items-center">
+              <img src={logoWindows} alt="Windows" className="h-8 w-auto" draggable={false} />
+            </div>
+            <div className="text-center text-[13px] text-[hsl(215_40%_20%)]">
+              © 2025 Reunion7
+            </div>
+            <div className="flex items-center justify-end gap-3 text-[13px]">
+              <a href="#" className="text-[hsl(210_100%_38%)] hover:underline">Discord server</a>
+              <span className="text-[hsl(215_20%_55%)]">|</span>
+              <a href="#" className="text-[hsl(210_100%_38%)] hover:underline">Credits</a>
+              <a
+                href="https://microsoft.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Microsoft"
+                className="ml-3"
+              >
+                <img src={logoMicrosoft} alt="Microsoft" className="h-4 w-auto" draggable={false} />
+              </a>
+            </div>
           </div>
-          <a
-            href="https://microsoft.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Microsoft"
-          >
-            <img src={logoMicrosoft} alt="Microsoft" className="h-3.5 w-auto opacity-90" loading="lazy" />
-          </a>
-        </div>
-        <div className="bg-[hsl(212_60%_14%)] py-3">
-          <p className="px-4 text-center text-[11px] font-bold text-primary-foreground/90 leading-relaxed">
-            This project is not related with Microsoft. Windows and the Windows logo are Microsoft's property.
-          </p>
+
+          {/* Mobile layout */}
+          <div className="md:hidden flex flex-col items-center gap-3 text-center">
+            <img src={logoWindows} alt="Windows" className="h-7 w-auto" draggable={false} />
+            <div className="text-[12px] text-[hsl(215_40%_20%)]">© 2025 Reunion7</div>
+            <div className="flex items-center gap-2 text-[12px]">
+              <a href="#" className="text-[hsl(210_100%_38%)] hover:underline">Discord server</a>
+              <span className="text-[hsl(215_20%_55%)]">|</span>
+              <a href="#" className="text-[hsl(210_100%_38%)] hover:underline">Credits</a>
+            </div>
+            <a
+              href="https://microsoft.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Microsoft"
+            >
+              <img src={logoMicrosoft} alt="Microsoft" className="h-3.5 w-auto" draggable={false} />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* DESKTOP footer — banner image with hotspots */}
-      <div className="hidden md:block w-full relative">
-        <img
-          src={footerBanner}
-          alt="©2026 AeroWorld — This project is not related with Microsoft."
-          className="w-full h-auto block select-none"
-          draggable={false}
-        />
-        <Link
-          to="/"
-          aria-label="Home"
-          className="absolute"
-          style={{ left: "9.4%", top: "23%", width: "11.5%", height: "30%" }}
-        />
-        <a
-          href="#"
-          aria-label="Credits"
-          className="absolute"
-          style={{ left: "57%", top: "28%", width: "7.2%", height: "16%" }}
-        />
-        <a
-          href="https://microsoft.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Microsoft"
-          className="absolute"
-          style={{ left: "88.5%", top: "28%", width: "8%", height: "18%" }}
-        />
+      {/* Disclaimer */}
+      <div className="bg-white">
+        <p className="max-w-[1100px] mx-auto px-4 sm:px-6 py-3 text-center text-[12px] sm:text-[13px] font-bold text-[hsl(215_40%_15%)]">
+          This project is not related with Microsoft. Windows and the Windows logo are Microsoft's property.
+        </p>
       </div>
     </footer>
   );
