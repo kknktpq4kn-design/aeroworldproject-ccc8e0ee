@@ -8,7 +8,7 @@ const navItems = [
   { to: "/", label: "Home" },
   { to: "/download", label: "Download" },
   { to: "/discover", label: "Discover Windows" },
-  { to: "#", label: "Credits" },
+  
 ];
 
 const Header = () => {

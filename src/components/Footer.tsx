@@ -28,8 +28,6 @@ const Footer = () => {
           </div>
           <div className="flex items-center justify-end gap-3 text-[13px]">
             <a href="#" className="text-[hsl(210_100%_38%)] hover:underline">Discord server</a>
-            <span className="text-[hsl(215_20%_55%)]">|</span>
-            <a href="#" className="text-[hsl(210_100%_38%)] hover:underline">Credits</a>
             <a
               href="https://microsoft.com"
               target="_blank"
@@ -48,8 +46,6 @@ const Footer = () => {
           <div className="text-[12px] text-[hsl(215_40%_20%)]">© 2025 Reunion7</div>
           <div className="flex items-center gap-2 text-[12px]">
             <a href="#" className="text-[hsl(210_100%_38%)] hover:underline">Discord server</a>
-            <span className="text-[hsl(215_20%_55%)]">|</span>
-            <a href="#" className="text-[hsl(210_100%_38%)] hover:underline">Credits</a>
           </div>
           <a
             href="https://microsoft.com"
