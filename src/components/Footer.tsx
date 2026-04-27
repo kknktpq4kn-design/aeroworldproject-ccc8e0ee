@@ -1,6 +1,6 @@
 import waveBg from "@/assets/r7-wave.png";
-import logoWindows from "@/assets/r7-logo-windows.jpg";
-import logoMicrosoft from "@/assets/r7-logo-microsoft.jpg";
+import logoWindows from "@/assets/r7-logo-windows.png";
+import logoMicrosoft from "@/assets/r7-logo-microsoft.png";
 
 const Footer = () => {
   return (

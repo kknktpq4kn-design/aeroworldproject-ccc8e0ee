@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import waveBg from "@/assets/r7-wave.png";
-import logoWindows from "@/assets/r7-logo-windows.jpg";
+import logoWindows from "@/assets/r7-logo-windows.png";
 
 const navItems = [
   { to: "/", label: "Home" },
