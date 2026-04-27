@@ -19,17 +19,17 @@ const Header = () => {
     to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
 
   return (
-    <header className="w-full bg-white">
-      {/* Wave background area (top utility bar + logo) */}
-      <div
-        className="w-full bg-white"
-        style={{
-          backgroundImage: `url(${waveBg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "right top",
-          backgroundSize: "auto 100%",
-        }}
-      >
+    <header
+      className="w-full"
+      style={{
+        backgroundColor: "hsl(205 80% 96%)",
+        backgroundImage: `url(${waveBg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center top",
+        backgroundSize: "100% 100%",
+      }}
+    >
+      <div className="w-full">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
           {/* Top utility bar */}
           <div className="flex justify-end items-center pt-3 text-[12px] gap-2">
